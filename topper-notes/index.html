@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Topper Notes | CBSE Study Resources</title>
-  <!-- Google Fonts & Font Awesome (free icons) -->
+  <title>Topper Notes | CBSE Chapter-Wise Notes</title>
+  <!-- Google Fonts & Font Awesome -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
@@ -24,7 +24,6 @@
       scroll-behavior: smooth;
     }
 
-    /* light blue & white main theme */
     .container {
       max-width: 1300px;
       margin: 0 auto;
@@ -33,14 +32,8 @@
 
     /* header animation */
     @keyframes fadeSlideDown {
-      0% {
-        opacity: 0;
-        transform: translateY(-30px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      0% { opacity: 0; transform: translateY(-30px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
 
     header {
@@ -62,11 +55,7 @@
       gap: 12px;
     }
 
-    .logo i {
-      background: none;
-      color: #2c7da0;
-      font-size: 2.6rem;
-    }
+    .logo i { background: none; color: #2c7da0; font-size: 2.6rem; }
 
     .tagline {
       font-size: 1.1rem;
@@ -102,38 +91,20 @@
       transition: all 0.25s ease;
       color: #1e5f7a;
       font-family: inherit;
-      backdrop-filter: blur(2px);
-      letter-spacing: 0.3px;
     }
 
-    .class-btn i {
-      margin-right: 8px;
-    }
+    .class-btn i { margin-right: 8px; }
+    .class-btn:hover { transform: translateY(-4px); background: #cfeaff; box-shadow: 0 12px 20px rgba(33, 147, 176, 0.2); }
+    .class-btn.active { background: #1976a5; color: white; box-shadow: 0 8px 18px rgba(25, 118, 165, 0.3); }
 
-    .class-btn:hover {
-      transform: translateY(-4px);
-      background: #cfeaff;
-      box-shadow: 0 12px 20px rgba(33, 147, 176, 0.2);
-      color: #03506f;
-    }
-
-    .class-btn.active {
-      background: #1976a5;
-      color: white;
-      box-shadow: 0 8px 18px rgba(25, 118, 165, 0.3);
-      border: 1px solid rgba(255,255,255,0.3);
-    }
-
-    /* subject grid cards */
+    /* subject grid */
     .subjects-section {
       background: rgba(255, 255, 255, 0.75);
       backdrop-filter: blur(4px);
       border-radius: 2rem;
-      padding: 1.8rem 1.8rem 2.2rem;
+      padding: 1.8rem;
       box-shadow: 0 20px 35px -12px rgba(0, 55, 80, 0.15);
-      transition: all 0.3s;
       margin-bottom: 3rem;
-      border: 1px solid rgba(255,255,255,0.6);
     }
 
     .section-title {
@@ -159,9 +130,8 @@
       border-radius: 1.25rem;
       padding: 1rem 0.8rem;
       text-align: center;
-      transition: all 0.25s ease-in-out;
       cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+      transition: all 0.25s ease-in-out;
       border: 1px solid #e2f0ff;
       display: flex;
       flex-direction: column;
@@ -169,163 +139,113 @@
       gap: 8px;
     }
 
-    .subject-card:hover {
-      transform: translateY(-6px) scale(1.01);
-      background: #f6fdff;
-      border-color: #9ac7e7;
-      box-shadow: 0 18px 28px -10px rgba(44, 125, 160, 0.25);
-    }
+    .subject-card:hover { transform: translateY(-6px); background: #f6fdff; border-color: #9ac7e7; box-shadow: 0 18px 28px -10px rgba(44, 125, 160, 0.25); }
+    .subject-icon { font-size: 2rem; color: #2c7da0; }
+    .subject-name { font-weight: 600; font-size: 1.05rem; color: #144e6b; }
+    .chapter-count { font-size: 0.7rem; background: #e9f4fb; padding: 4px 12px; border-radius: 40px; color: #1f6e93; display: inline-flex; align-items: center; gap: 5px; margin-top: 5px; }
 
-    .subject-icon {
-      font-size: 2rem;
-      color: #2c7da0;
-      min-width: 48px;
-      display: flex;
-      align-items: center;
+    /* Popup Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 30, 50, 0.7);
+ backdrop-filter: blur(5px);
+      z-index: 1000;
       justify-content: center;
-    }
-
-    /* Ensure SVG (font awesome) icons render properly */
-    .subject-icon i, .subject-icon svg {
-      width: 1.8rem;
-      height: 1.8rem;
-      display: inline-block;
-    }
-
-    .subject-name {
-      font-weight: 600;
-      font-size: 1.05rem;
-      color: #144e6b;
-    }
-
-    .download-badge {
-      font-size: 0.7rem;
-      background: #e9f4fb;
-      padding: 4px 12px;
-      border-radius: 40px;
-      color: #1f6e93;
-      display: inline-flex;
       align-items: center;
-      gap: 5px;
-      margin-top: 5px;
-      font-weight: 500;
+      animation: fadeIn 0.2s ease;
     }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-    /* special notes link info */
-    .info-note {
+    .modal-content {
       background: white;
-      border-radius: 1.5rem;
-      padding: 0.8rem 1.4rem;
-      margin-top: 1.8rem;
-      font-size: 0.85rem;
-      color: #2c5f7a;
-      border-left: 3px solid #63b3d1;
+      width: 90%;
+      max-width: 650px;
+      max-height: 80vh;
+      border-radius: 2rem;
+      box-shadow: 0 30px 40px rgba(0,0,0,0.2);
+      overflow: hidden;
+      animation: slideUp 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+    @keyframes slideUp { from { transform: translateY(40px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+    .modal-header {
+      background: #1976a5;
+      color: white;
+      padding: 1.2rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .modal-header h3 { font-size: 1.4rem; display: flex; align-items: center; gap: 10px; }
+    .close-modal { background: none; border: none; color: white; font-size: 1.8rem; cursor: pointer; transition: 0.2s; }
+    .close-modal:hover { transform: scale(1.1); opacity: 0.8; }
+
+    .chapter-list {
+      padding: 1rem 1.5rem 1.8rem;
+      max-height: 55vh;
+      overflow-y: auto;
+    }
+    .chapter-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.9rem 0.8rem;
+      border-bottom: 1px solid #e2edf7;
+      transition: 0.15s;
+    }
+    .chapter-item:hover { background: #f0f9ff; border-radius: 1rem; }
+    .chapter-name { font-weight: 500; color: #144e6b; }
+    .pdf-link-btn {
+      background: #e9f4fb;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 40px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #1976a5;
+      cursor: pointer;
+      transition: 0.2s;
       display: flex;
       align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-      justify-content: space-between;
+      gap: 6px;
     }
+    .pdf-link-btn:hover { background: #1976a5; color: white; transform: scale(0.97); }
 
-    .info-note i {
-      font-size: 1.2rem;
-      color: #1976a5;
-    }
-
-    /* footer styles */
     .footer {
       background: rgba(255, 255, 255, 0.9);
       backdrop-filter: blur(8px);
       border-radius: 2rem;
       padding: 1.8rem 1.5rem;
       margin-top: 2rem;
-      box-shadow: 0 -2px 12px rgba(0,0,0,0.02);
-      border: 1px solid rgba(255,255,255,0.7);
     }
-
     .footer-links {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 1.5rem;
-      row-gap: 0.8rem;
       margin-bottom: 1rem;
     }
+    .footer-links a { text-decoration: none; color: #176987; font-weight: 500; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 6px; transition: 0.2s; }
+    .footer-links a:hover { color: #033b52; transform: translateY(-2px); text-decoration: underline; }
+    .donate-highlight { background: #ffe7cf; padding: 0.2rem 1rem; border-radius: 60px; }
+    .footer-copyright { text-align: center; font-size: 0.75rem; color: #4f7e99; border-top: 1px dashed #b9d7ef; padding-top: 1rem; margin-top: 0.5rem; }
 
-    .footer-links a {
-      text-decoration: none;
-      color: #176987;
-      font-weight: 500;
-      font-size: 0.9rem;
-      transition: all 0.2s;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .footer-links a:hover {
-      color: #033b52;
-      transform: translateY(-2px);
-      text-decoration: underline;
-    }
-
-    .footer-copyright {
-      text-align: center;
-      font-size: 0.75rem;
-      color: #4f7e99;
-      border-top: 1px dashed #b9d7ef;
-      padding-top: 1rem;
-      margin-top: 0.5rem;
-    }
-
-    .donate-highlight {
-      background: #ffe7cf;
-      padding: 0.2rem 1rem;
-      border-radius: 60px;
-      font-weight: 600;
-    }
-
-    /* animations */
-    @keyframes cardPop {
-      0% { opacity: 0; transform: scale(0.95); }
-      100% { opacity: 1; transform: scale(1); }
-    }
-
-    .animate-card {
-      animation: cardPop 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
-    }
-
-    /* responsive */
     @media (max-width: 650px) {
-      .container {
-        padding: 1.2rem;
-      }
-      .subjects-grid {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-      }
-      .class-btn {
-        padding: 0.5rem 1.2rem;
-        font-size: 1rem;
-      }
-      .logo {
-        font-size: 2rem;
-      }
+      .container { padding: 1.2rem; }
+      .subjects-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
     }
   </style>
 </head>
 <body>
 <div class="container">
   <header>
-    <div class="logo">
-      <i class="fas fa-graduation-cap"></i> 
-      <span>Topper Notes</span>
-    </div>
-    <div class="tagline">
-      <i class="fas fa-star-of-life" style="font-size: 0.8rem;"></i> CBSE | Topper Verified Notes <i class="fas fa-star-of-life" style="font-size: 0.8rem;"></i>
-    </div>
+    <div class="logo"><i class="fas fa-graduation-cap"></i> <span>Topper Notes</span></div>
+    <div class="tagline"><i class="fas fa-star-of-life"></i> CBSE Chapter-wise Notes (PDF) <i class="fas fa-star-of-life"></i></div>
   </header>
 
-  <!-- class selection buttons -->
   <div class="class-tabs" id="classTabs">
     <button class="class-btn active" data-class="9"><i class="fas fa-book-open"></i> Class 9</button>
     <button class="class-btn" data-class="10"><i class="fas fa-book-open"></i> Class 10</button>
@@ -333,213 +253,218 @@
     <button class="class-btn" data-class="12"><i class="fas fa-chalkboard-user"></i> Class 12</button>
   </div>
 
-  <!-- dynamic subject panel -->
-  <div class="subjects-section" id="subjectsPanel">
-    <div class="section-title">
-      <i class="fas fa-folder-open"></i> 
-      <span id="currentClassLabel">Class 9 · Subjects</span>
-    </div>
-    <div class="subjects-grid" id="subjectsGrid">
-      <!-- loaded dynamically -->
-    </div>
-    <div class="info-note">
-      <span><i class="fas fa-file-pdf"></i> 📘 Notes are in PDF format — click any subject to download / open notes.</span>
-      <span><i class="fas fa-link"></i> Special pattern: 12-Geo, 10-Eco use sample links</span>
-    </div>
+  <div class="subjects-section">
+    <div class="section-title"><i class="fas fa-folder-open"></i> <span id="currentClassLabel">Class 9 · Subjects</span></div>
+    <div class="subjects-grid" id="subjectsGrid"></div>
   </div>
 
-  <!-- footer with all required links -->
   <div class="footer">
     <div class="footer-links">
-      <a href="https://wondermayank.github.io" target="_blank" rel="noopener"><i class="fas fa-globe"></i> wondermayank.github.io</a>
-      <a href="https://commercesehoga.github.io/dashboard" target="_blank" rel="noopener"><i class="fas fa-laptop-code"></i> CBT Mock Platform</a>
-      <a href="https://wondermayank.github.io/terms" target="_blank" rel="noopener"><i class="fas fa-file-contract"></i> Terms</a>
-      <a href="https://wondermayank.github.io/privacy" target="_blank" rel="noopener"><i class="fas fa-shield-alt"></i> Privacy</a>
-      <a href="https://wondermayank.github.io/disclaimer" target="_blank" rel="noopener"><i class="fas fa-exclamation-triangle"></i> Disclaimer</a>
-      <a href="https://wondermayank.github.io/contact" target="_blank" rel="noopener"><i class="fas fa-envelope"></i> Contact Owner</a>
-      <a href="https://commercesehoga.github.io/help" target="_blank" rel="noopener" class="donate-highlight"><i class="fas fa-heart"></i> Donation / Support</a>
+      <a href="https://wondermayank.github.io" target="_blank"><i class="fas fa-globe"></i> wondermayank.github.io</a>
+      <a href="https://commercesehoga.github.io/dashboard" target="_blank"><i class="fas fa-laptop-code"></i> CBT Mock Platform</a>
+      <a href="https://wondermayank.github.io/terms" target="_blank"><i class="fas fa-file-contract"></i> Terms</a>
+      <a href="https://wondermayank.github.io/privacy" target="_blank"><i class="fas fa-shield-alt"></i> Privacy</a>
+      <a href="https://wondermayank.github.io/disclaimer" target="_blank"><i class="fas fa-exclamation-triangle"></i> Disclaimer</a>
+      <a href="https://wondermayank.github.io/contact" target="_blank"><i class="fas fa-envelope"></i> Contact Owner</a>
+      <a href="https://commercesehoga.github.io/help" target="_blank" class="donate-highlight"><i class="fas fa-heart"></i> Donation / Support</a>
     </div>
-    <div class="footer-copyright">
-      <i class="far fa-copyright"></i> Topper Notes — curated resources for CBSE preparation. All notes provided for educational reference.
+    <div class="footer-copyright"><i class="far fa-copyright"></i> Topper Notes — Click any subject to see chapters & download PDFs.</div>
+  </div>
+</div>
+
+<!-- Modal Popup -->
+<div id="chapterModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3><i id="modalSubjectIcon" class="fas fa-book"></i> <span id="modalSubjectName"></span> - Chapters</h3>
+      <button class="close-modal" id="closeModalBtn">&times;</button>
+    </div>
+    <div class="chapter-list" id="chapterListContainer">
+      <!-- dynamic chapters + pdf buttons -->
     </div>
   </div>
 </div>
 
 <script>
-  // ---------- DATA: subjects per class & custom note link mapping ----------
+  // --------------------------------------------------------------
+  //  CHAPTER DATA (as per requirement for 9,10 & CBSE 11/12 syllabus)
+  // --------------------------------------------------------------
+  
+  // For class 9
+  const chapters9 = {
+    "Maths": ["Number System", "Polynomials", "Coordinate Geometry", "Linear Equations In Two Variables", "Introduction To Euclid's Geometry", "Lines and Angles", "Triangles", "Quadrilaterals", "Circles", "Heron's Formula", "Surface Areas and Volumes", "Statistics"],
+    "Science": ["Matter In Our Surroundings", "Is Matter Around Us Pure", "Atoms And Molecules", "Structure Of The Atom", "The Fundamental Unit Of Life", "Tissues", "Motion", "Force And Laws of Motion", "Gravitation", "Work and Energy", "Sounds", "Improvement In Food Resources"],
+    "Civics": ["What is Democracy? Why Democracy?", "Constitutional Design", "Electoral Politics", "Working of Institutions", "Democratic Rights"],
+    "History": ["The French Revolution", "Socialism in Europe and the Russian Revolution", "Nazism and the Rise of Hitler", "Forest Society and Colonialism", "Pastoralists in the Modern World"],
+    "Geography": ["India - Size And Location", "Physical Features Of India", "Drainage", "Climate", "Natural Vegetation And Wildlife", "Population"],
+    "Economics": ["The Story of Village Palampur", "People as Resource", "Poverty as a Challenge", "Food Security in India"]
+  };
+  
+  const chapters10 = {
+    "Maths": ["Real Numbers", "Polynomials", "Pair Of Linear Equations In Two Variables", "Quadratics Equations", "Arithmetic Progressions", "Triangles", "Coordinate Geometry", "Introduction to Trigonometry", "Some Applications of Trigonometry", "Circles", "Areas Related to Circles", "Surface Areas and Volumes", "Statistics", "Probability"],
+    "Science": ["Chemical Reactions and Equations", "Acids, Bases and Salts", "Metals and Non-Metals", "Carbon and its Compounds", "Life Processes", "Control and Coordination", "How do Organisms Reproduce", "Heredity & Evolution", "Light - Reflection and Refraction", "The Human Eye and the Colourful World", "Electricity", "Magnetic Effects of Electric Current", "Our Environment"],
+    "Civics": ["Power-Sharing", "Federalism", "Gender, Religion and Caste", "Political Parties", "Outcomes of Democracy"],
+    "History": ["The Rise of Nationalism in Europe", "Nationalism in India", "The Making of a Global World", "The Age of Industrialisation", "Print Culture and the Modern World"],
+    "Geography": ["Resources And Development", "Forest And Wildlife Resources", "Water Resources", "Agriculture", "Minerals And Energy Resources", "Manufacturing Industries", "Lifelines of National Economy"],
+    "Economics": ["Development", "Sectors Of The Indian Economy", "Money And Credit", "Globalisation And The Indian Economy", "Consumer Rights"]
+  };
+  
+  // Class 11 chapters (CBSE New Syllabus - major subjects)
+  const chapters11 = {
+    "Phy": ["Physical World", "Units and Measurements", "Motion in a Straight Line", "Motion in a Plane", "Laws of Motion", "Work, Energy and Power", "System of Particles and Rotational Motion", "Gravitation", "Mechanical Properties of Solids", "Mechanical Properties of Fluids", "Thermal Properties of Matter", "Thermodynamics", "Kinetic Theory", "Oscillations", "Waves"],
+    "Che": ["Some Basic Concepts of Chemistry", "Structure of Atom", "Classification of Elements and Periodicity", "Chemical Bonding and Molecular Structure", "Thermodynamics", "Equilibrium", "Redox Reactions", "Organic Chemistry: Some Basic Principles", "Hydrocarbons"],
+    "Maths": ["Sets", "Relations and Functions", "Trigonometric Functions", "Complex Numbers", "Linear Inequalities", "Permutations and Combinations", "Binomial Theorem", "Sequence and Series", "Straight Lines", "Conic Sections", "Introduction to Three Dimensional Geometry", "Limits and Derivatives", "Statistics", "Probability"],
+    "Bio": ["The Living World", "Biological Classification", "Plant Kingdom", "Animal Kingdom", "Morphology of Flowering Plants", "Anatomy of Flowering Plants", "Structural Organisation in Animals", "Cell: The Unit of Life", "Biomolecules", "Cell Cycle and Cell Division", "Transport in Plants", "Mineral Nutrition", "Photosynthesis", "Respiration in Plants", "Plant Growth and Development", "Digestion and Absorption", "Breathing and Exchange of Gases", "Body Fluids and Circulation", "Excretory Products", "Locomotion and Movement", "Neural Control", "Chemical Coordination"]
+  };
+  
+  // Class 12 chapters (as per CBSE new syllabus)
+  const chapters12 = {
+    "Phy": ["Electric Charges and Fields", "Electrostatic Potential and Capacitance", "Current Electricity", "Moving Charges and Magnetism", "Magnetism and Matter", "Electromagnetic Induction", "Alternating Current", "Electromagnetic Waves", "Ray Optics", "Wave Optics", "Dual Nature of Radiation", "Atoms", "Nuclei", "Semiconductor Electronics"],
+    "Che": ["Solutions", "Electrochemistry", "Chemical Kinetics", "d and f Block Elements", "Coordination Compounds", "Haloalkanes and Haloarenes", "Alcohols, Phenols and Ethers", "Aldehydes, Ketones and Carboxylic Acids", "Amines", "Biomolecules", "Polymers", "Chemistry in Everyday Life"],
+    "Maths": ["Relations and Functions", "Inverse Trigonometric Functions", "Matrices", "Determinants", "Continuity and Differentiability", "Application of Derivatives", "Integrals", "Application of Integrals", "Differential Equations", "Vector Algebra", "Three Dimensional Geometry", "Linear Programming", "Probability"],
+    "Bio": ["Reproduction in Organisms", "Sexual Reproduction in Flowering Plants", "Human Reproduction", "Reproductive Health", "Principles of Inheritance", "Molecular Basis of Inheritance", "Evolution", "Human Health and Disease", "Strategies for Enhancement", "Microbes in Human Welfare", "Biotechnology: Principles", "Biotechnology and its Applications", "Organisms and Populations", "Ecosystem", "Biodiversity and Conservation", "Environmental Issues"],
+    "Eco": ["Introduction to Microeconomics", "Theory of Consumer Behaviour", "Production and Costs", "Theory of Firm Under Perfect Competition", "Market Equilibrium", "Non-Competitive Markets", "Introduction to Macroeconomics", "National Income Accounting", "Money and Banking", "Determination of Income", "Government Budget", "Open Economy Macroeconomics"],
+    "Bst": ["Nature and Significance of Management", "Principles of Management", "Business Environment", "Planning", "Organising", "Staffing", "Directing", "Controlling", "Financial Management", "Financial Markets", "Marketing Management", "Consumer Protection"],
+    "Eng": ["The Last Lesson", "Lost Spring", "Deep Water", "The Rattrap", "Indigo", "Poets and Pancakes", "The Interview", "Going Places", "My Mother at Sixty-six", "Keeping Quiet", "A Thing of Beauty", "A Roadside Stand", "Aunt Jennifer's Tigers"],
+    "His": ["Bricks, Beads and Bones", "Kings, Farmers and Towns", "Kinship, Caste and Class", "Thinkers, Beliefs and Buildings", "Through the Eyes of Travellers", "Bhakti- Sufi Traditions", "An Imperial Capital Vijayanagara", "Peasants, Zamindars", "Colonialism and Countryside", "Rebels and the Raj", "Mahatma Gandhi", "Framing Constitution"],
+    "Geo": ["Human Geography Nature", "The World Population", "Population Composition", "Human Development", "Primary Activities", "Secondary Activities", "Tertiary Activities", "Transport and Communication", "International Trade", "Human Settlements", "India: Location", "Migration", "Human Development", "Land Resources", "Water Resources", "Mineral Resources", "Manufacturing Industries", "Planning and Sustainable Development"],
+    "Poli": ["The Cold War Era", "The End of Bipolarity", "US Hegemony in World Politics", "Alternative Centres of Power", "Contemporary South Asia", "International Organizations", "Security in the Contemporary World", "Environment and Natural Resources", "Globalisation", "Challenges of Nation Building", "Era of One Party Dominance", "Politics of Planned Development", "India's External Relations", "Crisis of Democratic Order"]
+  };
+  
   const subjectsDB = {
     9: ["Maths", "Science", "Civics", "History", "Geography", "Economics"],
     10: ["Maths", "Science", "Civics", "History", "Geography", "Economics"],
     11: ["Phy", "Che", "Maths", "Bio"],
     12: ["Phy", "Che", "Maths", "Bio", "Eco", "Bst", "Eng", "His", "Geo", "Poli"]
   };
-
-  // Function to get the correct note download link (PDF) for any subject and class
-  function getNoteLink(classNum, subjectName) {
-    const classStr = classNum.toString();
-    const subLower = subjectName.toLowerCase();
-    // Special rules based on requirement: 
-    // "12-geo.pdf" and "10-eco.pdf" as explicitly mentioned
-    if (classNum === 12 && subLower === "geo") {
-      return "https://thunderstudy.github.io/cbse/topper-notes/12-geo.pdf";
-    }
-    if (classNum === 10 && subLower === "economics") {
-      return "https://thunderstudy.github.io/cbse/topper-notes/10-eco.pdf";
-    }
-    // For class 12 Economics (Eco) standard link: 12-eco.pdf (no special override needed but consistent)
-    // For all other subjects: generic class-subject.pdf
-    let fileName = `${classStr}-${subLower}.pdf`;
-    return `https://thunderstudy.github.io/cbse/topper-notes/${fileName}`;
+  
+  // Helper: map subject name to chapter object
+  function getChaptersForSubject(classNum, subjectName) {
+    if (classNum === 9) return chapters9[subjectName] || [];
+    if (classNum === 10) return chapters10[subjectName] || [];
+    if (classNum === 11) return chapters11[subjectName] || [];
+    if (classNum === 12) return chapters12[subjectName] || [];
+    return [];
   }
-
-  // Robust icon mapping - ensures EVERY subject, including "Eco" (Economics), gets a proper Font Awesome icon
-  // Fixed: Class 12 "Eco" now shows a beautiful chart-line icon (fa-chart-line) and also explicit fallback.
+  
+  // Generate PDF link based on class, subject, chapter (clean filename)
+  function getPDFLink(classNum, subjectName, chapterName) {
+    let classStr = classNum.toString();
+    let subSlug = subjectName.toLowerCase().replace(/\s/g, '');
+    let chapSlug = chapterName.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+    if(subSlug === 'civics') subSlug = 'civics';
+    if(subSlug === 'economics') subSlug = 'eco';
+    if(subSlug === 'geography') subSlug = 'geo';
+    if(subSlug === 'history') subSlug = 'history';
+    if(subSlug === 'science') subSlug = 'science';
+    if(subSlug === 'maths') subSlug = 'maths';
+    if(subSlug === 'phy') subSlug = 'physics';
+    if(subSlug === 'che') subSlug = 'chemistry';
+    if(subSlug === 'bio') subSlug = 'biology';
+    if(subSlug === 'bst') subSlug = 'business-studies';
+    if(subSlug === 'eng') subSlug = 'english';
+    if(subSlug === 'his') subSlug = 'history';
+    if(subSlug === 'geo') subSlug = 'geography';
+    if(subSlug === 'poli') subSlug = 'political-science';
+    if(subSlug === 'eco') subSlug = 'economics';
+    // base url pattern
+    return `https://thunderstudy.github.io/cbse/topper-notes/${classStr}-${subSlug}-${chapSlug}.pdf`;
+  }
+  
   function getSubjectIcon(subject) {
-    const sub = subject.toLowerCase();
-    // Mapping covers all subjects from classes 9-12 (including Eco, Bst, Eng, His, Geo, Poli, etc.)
-    const iconMap = {
-      // Core & Science
-      maths: "fa-calculator",
-      math: "fa-calculator",
-      science: "fa-flask",
-      phy: "fa-atom",
-      che: "fa-vial",
-      bio: "fa-dna",
-      // Humanities & Social Science
-      civics: "fa-landmark",
-      history: "fa-scroll",
-      his: "fa-hourglass-half",
-      geography: "fa-map",
-      geo: "fa-earth-asia",
-      economics: "fa-chart-line",
-      eco: "fa-chart-line",          // CRITICAL FIX: ensures Class 12 'Eco' gets perfect SVG icon
-      // Commerce & others
-      bst: "fa-briefcase",
-      eng: "fa-language",
-      poli: "fa-gavel",
-      // default or others
-      default: "fa-file-pdf"
-    };
-    return iconMap[sub] || iconMap.default;
+    const s = subject.toLowerCase();
+    const map = { maths:"fa-calculator", math:"fa-calculator", science:"fa-flask", civics:"fa-landmark", history:"fa-scroll", geography:"fa-map", economics:"fa-chart-line", phy:"fa-atom", che:"fa-vial", bio:"fa-dna", eco:"fa-chart-line", bst:"fa-briefcase", eng:"fa-language", his:"fa-hourglass-half", geo:"fa-earth-asia", poli:"fa-gavel" };
+    return map[s] || "fa-book";
   }
-
-  // Render subjects for selected class, with smooth animation and icon fix
+  
   let currentClass = 9;
   const subjectsGrid = document.getElementById("subjectsGrid");
   const currentClassLabelSpan = document.getElementById("currentClassLabel");
-
+  const modal = document.getElementById("chapterModal");
+  const modalSubjectNameSpan = document.getElementById("modalSubjectName");
+  const modalSubjectIcon = document.getElementById("modalSubjectIcon");
+  const chapterListContainer = document.getElementById("chapterListContainer");
+  const closeModalBtn = document.getElementById("closeModalBtn");
+  
+  function openModal(subjectName, classNum) {
+    const chapters = getChaptersForSubject(classNum, subjectName);
+    if (!chapters.length) {
+      alert(`No chapter data available for ${subjectName} (Class ${classNum})`);
+      return;
+    }
+    modalSubjectNameSpan.innerText = `${subjectName} (Class ${classNum})`;
+    modalSubjectIcon.className = `fas ${getSubjectIcon(subjectName)}`;
+    chapterListContainer.innerHTML = '';
+    chapters.forEach(ch => {
+      const pdfUrl = getPDFLink(classNum, subjectName, ch);
+      const div = document.createElement('div');
+      div.className = 'chapter-item';
+      div.innerHTML = `
+        <span class="chapter-name"><i class="fas fa-caret-right" style="color:#1976a5; margin-right:8px;"></i>${ch}</span>
+        <button class="pdf-link-btn" data-pdf="${pdfUrl}"><i class="fas fa-download"></i> PDF</button>
+      `;
+      const btn = div.querySelector('.pdf-link-btn');
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        window.open(btn.getAttribute('data-pdf'), '_blank');
+      });
+      chapterListContainer.appendChild(div);
+    });
+    modal.style.display = 'flex';
+  }
+  
+  function closeModal() { modal.style.display = 'none'; }
+  closeModalBtn.onclick = closeModal;
+  window.onclick = (e) => { if (e.target === modal) closeModal(); };
+  
   function renderSubjects(classNum) {
     const subjects = subjectsDB[classNum];
     if (!subjects) return;
-    // fade transition while rebuilding
     subjectsGrid.style.opacity = "0";
     setTimeout(() => {
       subjectsGrid.innerHTML = "";
-      subjects.forEach((sub, idx) => {
+      subjects.forEach(sub => {
         const card = document.createElement("div");
         card.className = "subject-card";
         const iconClass = getSubjectIcon(sub);
-        const pdfLink = getNoteLink(classNum, sub);
-        
-        // Inner HTML with properly displayed icon (Font Awesome i tag)
+        const chapterLen = getChaptersForSubject(classNum, sub).length;
         card.innerHTML = `
           <div class="subject-icon"><i class="fas ${iconClass}"></i></div>
           <div class="subject-name">${sub}</div>
-          <div class="download-badge"><i class="fas fa-download"></i> PDF Notes</div>
+          <div class="chapter-count"><i class="fas fa-list-ul"></i> ${chapterLen} Chapters</div>
         `;
-        
-        // Open PDF link in new tab on click
-        card.addEventListener("click", (e) => {
-          e.stopPropagation();
-          window.open(pdfLink, "_blank", "noopener,noreferrer");
-        });
-        
+        card.addEventListener("click", () => openModal(sub, classNum));
         subjectsGrid.appendChild(card);
-        // Staggered pop animation for each card
-        setTimeout(() => {
-          if (card) card.classList.add("animate-card");
-        }, idx * 40);
       });
       subjectsGrid.style.opacity = "1";
-      // Update section label
-      let suffix = "";
-      if (classNum === 11) suffix = " (PCM/B)";
-      else if (classNum === 12) suffix = " (All streams)";
-      currentClassLabelSpan.innerHTML = `Class ${classNum} · Subjects${suffix}`;
+      currentClassLabelSpan.innerHTML = `Class ${classNum} · Subjects (Click to view chapters)`;
     }, 80);
   }
-
+  
   function setActiveClassButton(classNum) {
-    const btns = document.querySelectorAll(".class-btn");
-    btns.forEach(btn => {
-      const btnClass = parseInt(btn.getAttribute("data-class"));
-      if (btnClass === classNum) {
-        btn.classList.add("active");
-      } else {
-        btn.classList.remove("active");
-      }
+    document.querySelectorAll(".class-btn").forEach(btn => {
+      let val = parseInt(btn.getAttribute("data-class"));
+      if (val === classNum) btn.classList.add("active");
+      else btn.classList.remove("active");
     });
   }
-
+  
   function switchClass(classNum) {
     currentClass = classNum;
     renderSubjects(currentClass);
     setActiveClassButton(currentClass);
   }
-
-  // attach event listeners to class buttons
-  const classButtons = document.querySelectorAll(".class-btn");
-  classButtons.forEach(btn => {
+  
+  document.querySelectorAll(".class-btn").forEach(btn => {
     btn.addEventListener("click", () => {
-      const classVal = parseInt(btn.getAttribute("data-class"));
-      if (!isNaN(classVal) && classVal !== currentClass) {
-        switchClass(classVal);
-      }
+      let val = parseInt(btn.getAttribute("data-class"));
+      if (!isNaN(val) && val !== currentClass) switchClass(val);
     });
   });
-
-  // Initial render for Class 9 (default active)
+  
+  // init
   renderSubjects(9);
   setActiveClassButton(9);
-
-  // Additional style to ensure FontAwesome SVG/webfont renders perfectly for all icons
-  const styleFix = document.createElement('style');
-  styleFix.textContent = `
-    .subject-icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .subject-icon i, .subject-icon svg {
-      font-size: 1.9rem;
-      transition: transform 0.2s ease;
-    }
-    .subject-card:hover .subject-icon i {
-      transform: scale(1.05);
-      color: #115e82;
-    }
-    /* ensure no icon missing fallback */
-    .fas, .far {
-      font-family: "Font Awesome 6 Free";
-    }
-  `;
-  document.head.appendChild(styleFix);
-  
-  // Add an informative console message (non-intrusive)
-  console.log("Topper Notes | All icons active — Class 12 'Eco' uses chart-line icon ✓");
-
-  // Additional edge handling: double-check if any icon class fails to load from CDN but that's rare.
-  // For extreme safety, we add a manual DOM check after each render to verify icon rendering, but not required.
-  // Also update the info-note with extra tip (optional)
-  const infoDiv = document.querySelector('.info-note');
-  if (infoDiv && !infoDiv.querySelector('.extra-tip')) {
-    const extraSpan = document.createElement('span');
-    extraSpan.className = 'extra-tip';
-    extraSpan.innerHTML = '<i class="fas fa-lightbulb"></i> Tap on any subject card → Opens official PDF notes.';
-    extraSpan.style.fontSize = "0.75rem";
-    extraSpan.style.fontWeight = "500";
-    infoDiv.appendChild(extraSpan);
-  }
 </script>
 </body>
 </html>
