@@ -352,17 +352,17 @@ const chaptersDB = {
   },
   10: {
     Maths:   ["Real Numbers","Polynomials","Pair of Linear Equations in Two Variables","Quadratic Equations","Arithmetic Progressions","Triangles","Coordinate Geometry","Introduction to Trigonometry","Some Applications of Trigonometry","Circles","Areas Related to Circles","Surface Areas and Volumes","Statistics","Probability"],
-    Science: ["Chemical Reactions and Equations","Acids, Bases and Salts","Metals and Non-Metals","Carbon and its Compounds","Life Processes","Control and Coordination","How do Organisms Reproduce?","Heredity","Light – Reflection and Refraction","The Human Eye and the Colourful World","Electricity","Magnetic Effects of Electric Current","Our Environment"]
+    Science: ["Electricity","Heredity and Evolution","Human Eye and Colourful World","Light- Reflection and Refraction","Source of Energy","Acids, Bases and Salts","Carbon and its Compounds","Chemical Reactions and Equations","Metals and Non-Metals","Periodic Classification of Elements","Management of natural Resources","Life Processes","How Do Organisms Reproduce?","Control and Coordination"]
   },
   11: {
-    Maths: ["Sets","Relations and Functions","Trigonometric Functions","Complex Numbers and Quadratic Equations","Linear Inequalities","Permutations and Combinations","Binomial Theorem","Sequences and Series","Straight Lines","Conic Sections","Introduction to Three Dimensional Geometry","Limits and Derivatives","Statistics","Probability"],
-    Phy:   ["Units and Measurements","Motion in a Straight Line","Motion in a Plane","Laws of Motion","Work, Energy and Power","Systems of Particles and Rotational Motion","Gravitation","Mechanical Properties of Solids","Mechanical Properties of Fluids","Thermal Properties of Matter","Thermodynamics","Kinetic Theory","Oscillations","Waves"],
-    Che:   ["Some Basic Concepts of Chemistry","Structure of Atom","Classification of Elements and Periodicity in Properties","Chemical Bonding and Molecular Structure","Thermodynamics","Equilibrium","Redox Reactions","Organic Chemistry – Some Basic Principles and Techniques","Hydrocarbons"]
+    Maths: ["Sets","Relations And Functions","Trigonometry Functions","Principle Of Mathematical Induction","Complex Number And Quadratic Equations","Linear Inequalities","Permutations And Combinations","Binomial Theorem","Sequence And Series","Straight Lines","Conic Sections","Introduction to Three Dimensional Geometry","Limits And Derivatives","Mathematical Reasoning","Statistics","Probability"],
+    Phy:   ["Measurements Units and Dimensions","Work, Energy & Power","Transmission of Heat","Thermodynamics","Surface Tension","Simple Harmonic Motion","Rotatory Motion","Centre of Mass","Properties of Matter","Kinematics","Gravitation","Friction","Fluid Mechanics","Elasticity"],
+    Che:   ["Some Basic Concepts of Chemistry","Structure of Atom","Classification of elements & Periodicity in Properties","States of Matter","Thermodynamics","Equilibrium","Redox Reactions","Hydrogen","The s-Block Elements","The P-Block Elements","Organic Chemistry-Some Basic Principles"]
   },
   12: {
-    Maths: ["Relations and Functions","Inverse Trigonometric Functions","Matrices","Determinants","Continuity and Differentiability","Application of Derivatives","Integrals","Application of Integrals","Differential Equations","Vector Algebra","Three Dimensional Geometry","Linear Programming","Probability"],
-    Phy:   ["Electric Charges and Fields","Electrostatic Potential and Capacitance","Current Electricity","Moving Charges and Magnetism","Magnetism and Matter","Electromagnetic Induction","Alternating Current","Electromagnetic Waves","Ray Optics and Optical Instruments","Wave Optics","Dual Nature of Radiation and Matter","Atoms","Nuclei","Semiconductor Electronics: Materials, Devices and Simple Circuits"],
-    Che:   ["Solutions","Electrochemistry","Chemical Kinetics","The d- and f-Block Elements","Coordination Compounds","Haloalkanes and Haloarenes","Alcohols, Phenols and Ethers","Aldehydes, Ketones and Carboxylic Acids","Amines","Biomolecules"],
+    Maths: ["Continuity and Differentiability","Application of Derivatives","Integrals","Applications of Integrals","Three Dimensional Geometry","Sets, Relations, Functions & Binary Operation","Complex Number","Quadratic Equations","Sequence And Series","Permutation and Combination","Binomial Theorem","Exponential and Logarithmic Series","Trigonometric Functions","Inverse Trigonometric Functions","Solution of Triangles","Cartesian Functions of Rectangular Coordinates","The Straight Line","Family of Lines","Circles and Family of Circles","Conic Section","Frequency Tables","Linear Programming","Probability","Vector Algebra","Functions, Limits and Continuity","Differentiation of Their Application","Indefinite and Definite Integral","Differential Equations","Matrices and Determinants","Mensuration"],
+    Phy:   ["Measurements","Motion in One Dimension","Motion in Two and Three Dimensions","Newton's Laws of Motion","Work Power and Energy","Centre Of Mass","Gravitation, Gravity","Properties of Matter","Heat and Thermodynamics","Oscillations","Waves","Electrostatics","Electricity and Magnetism","Thermal Chemical and Magnetic Effects of Current","Wave Optics","Ray Optics"],
+    Che:   ["Introduction","Atomic Structure","Periodic Table","Chemical Bonding","States of Matter","Chemical Kinetics","Theory of Dilute Solutions","Thermochemistry","Ionic Equilibrium, pH and Hydrolysis","Redox Reactions","Electrochemistry","Surface Chemistry","Chemistry of Non-metals","Metallurgy","Chemistry of Metals","Some Important Alloys - Their Compositions & Uses","Important Compounds And Their Formula","Organic Compounds","Carbohydrates, Enzymes","Polymers","Chemistry In Action","Nano-Chemistry"],
     Eco:   [] // single PDF — no chapter split
   }
 };
@@ -383,14 +383,14 @@ const classInfo = {
 
 // PDF link builder
 // thunderstudy.github.io/special/formula/pdf
-// pattern: /{cls}{slug}{chapterIndex}  (chapter-wise)
-//           /{cls}{slug}               (single, e.g. eco)
+// pattern: /{cls}{slug}{chapterIndex}.pdf  (chapter-wise)
+//           /{cls}{slug}.pdf               (single, e.g. eco)
 function getPDFLink(cls, sub, idx) {
   const slug = (subjectMeta[sub]||{}).slug || sub.toLowerCase();
   if (idx === null) {
-    return `https://thunderstudy.github.io/special/formula/pdf/${cls}${slug}`;
+    return `https://thunderstudy.github.io/special/formula/pdf/${cls}${slug}.pdf`;
   }
-  return `https://thunderstudy.github.io/special/formula/pdf/${cls}${slug}${idx}`;
+  return `https://thunderstudy.github.io/special/formula/pdf/${cls}${slug}${idx}.pdf`;
 }
 
 // ─── STATE ───
