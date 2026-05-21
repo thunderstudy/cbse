@@ -403,12 +403,11 @@ function getChapters(cls, sub) {
   return ({10:chapters10,11:chapters11,12:chapters12}[cls]||{})[sub]||[];
 }
 
-// URL: thunderstudy.github.io/concept-map/{slug}{cls}{chapterIndex}
-// e.g. /concept-map/science912  → science, class 9, chapter 12 (no, simpler: science-9-12)
-// Actually: thunderstudy.github.io/concept-map/9science1
+// URL: thunderstudy.github.io/concept-map/{cls}{slug}{chapterIndex}.pdf
+// e.g. /concept-map/10science12.pdf → science, class 10, chapter 12
 function getPDFLink(cls, sub, idx) {
   const slug = (subjectMeta[sub]||{}).slug || sub.toLowerCase();
-  return `https://thunderstudy.github.io/concept-map/${cls}${slug}${idx}`;
+  return `https://thunderstudy.github.io/concept-map/${cls}${slug}${idx}.pdf`;
 }
 
 // ─── STATE ───
