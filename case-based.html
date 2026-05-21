@@ -403,11 +403,11 @@ function getChapters(cls, sub) { return (chaptersDB[cls]||{})[sub]||[]; }
 
 function getPDFLink(cls, sub, idx) {
   const slug = (subjectMeta[sub]||{}).slug || sub.toLowerCase();
-  return `https://thunderstudy.github.io/case-based/pdf/${cls}${slug}${idx}`;
+  return `https://thunderstudy.github.io/case-based/pdf/${cls}${slug}${idx}.pdf`;
 }
 function getFullPDFLink(cls, sub) {
   const slug = (subjectMeta[sub]||{}).slug || sub.toLowerCase();
-  return `https://thunderstudy.github.io/case-based/pdf/${cls}${slug}`;
+  return `https://thunderstudy.github.io/case-based/pdf/${cls}${slug}.pdf`;
 }
 
 // ─── STATE ───
